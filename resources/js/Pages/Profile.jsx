@@ -3,16 +3,16 @@ import PostPictureForm from '@/Pages/Profile/PostPictureForm'
 import { Head, Link } from '@inertiajs/react' 
 import { useEffect, useState } from 'react'
 
-export default function Profile({ auth, user, pictures })
+export default function Profile({ auth, user, pictures = null })
 {
     const [isYourProfile, setIsYourProfile] = useState(null)
     const [header, setHeader] = useState(null)
 
-    const images = pictures.map(image => 
+    const images = (pictures != null) ? (pictures.map(image => 
         <Link href={route('picture.details', {id: image.id})}>
             <img className="w-80 float-left p-3 hover:scale-105 transition-all cursor-pointer" src={'/storage/images/' + image.image}/>
         </Link>
-        )
+        )) : ('')
     function onYourProfile()
     {
         if (auth.user.id == user.id)
@@ -26,7 +26,6 @@ export default function Profile({ auth, user, pictures })
 
     useEffect(() => {
         onYourProfile()
-        console.log(pictures)
         if(isYourProfile)
         {
             setHeader("Upload new photo")
@@ -44,7 +43,7 @@ export default function Profile({ auth, user, pictures })
                 header={header}
             >
 
-            <Head title={auth.user.name}/>
+            <Head title={'HI'}/>
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">

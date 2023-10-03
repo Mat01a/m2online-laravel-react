@@ -42,9 +42,6 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/profile', [PictureController::class, 'store'])->name('profile.store.picture');
-    Route::get('/profile/{id}/picture', function () {
-        return response('Y', 400);
-    })->name('profile.picture');
     Route::get('/picture/{id}', [PictureController::class, 'show'])->name('picture.details');
 });
 

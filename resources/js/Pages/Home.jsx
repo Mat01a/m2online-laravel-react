@@ -1,19 +1,13 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
-import SongCard from '@/Components/SongCard'
 import { Head, Link } from '@inertiajs/react'
-import { useEffect } from 'react'
 
 
 export default function Home({ auth,  pictures }) {
     const listItems = pictures.map(picture => 
-        <Link href={route('picture.details', {id: 1})}>
+        <Link key={picture.id} href={route('picture.details', {id: 1})}>
             <img className="w-80 float-left p-3 hover:scale-105 transition-all cursor-pointer" src={'/storage/images/' + picture.image}/>
         </Link>
     )
-
-    useEffect(() => {
-        console.log(pictures)
-    })
 
     return (
         <>

@@ -1,13 +1,10 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout"
 import { Head, Link } from "@inertiajs/react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 export default function PictureDetails({ auth, details, author }) {
     const [isClicked, setIsClicked] = useState(false)
 
-    useEffect(() => {
-        console.log(details)
-    })
 
     function Like()
     {
@@ -34,8 +31,7 @@ export default function PictureDetails({ auth, details, author }) {
 
                         <div className="mx-auto mt-3 pt-3 dark:bg-gray-50 h-[80vh] max-w-lg drop-shadow-2xl">
                             <div className="my-6 w-[85%] h-[65%] dark:bg-purple-500 overflow-hidden mx-auto">
-                                <img className="w-full" src={"/storage/images/" + details.image}/>
-                                {JSON.stringify(details)}
+                                <img className="w-full h-full" src={"/storage/images/" + details.image}/>
 
                             </div>
                             <div className="h-2 border-b border-gray-300 mx-8"></div>
@@ -58,7 +54,7 @@ export default function PictureDetails({ auth, details, author }) {
                                 </div>
                             </div>
                             <div className="px-8 w-full">
-                                This is awesome!
+                                {details.description}
                             </div>
                             <div className="text-sm text-gray-700 px-8 w-full">
                             </div>

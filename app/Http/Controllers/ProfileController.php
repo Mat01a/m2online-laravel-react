@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
+use Illuminate\Support\Facades\DB;
+
+
 class ProfileController extends Controller
 {
     /**
@@ -59,5 +62,22 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+
+    public function show(Request $request)
+    {
+        $id = $request->id;
+        $user_profile = DB::table('users')
+            ->where('id', $id)
+            ->first();
+        
+        $pictures = DB::table('pictures')
+            ->where('user_id', $id)
+            ->get();
+        return Inertia::render('Profile', [
+            'user' => $user_profile,
+            'pictures' => $pictures
+        ]);
     }
 }

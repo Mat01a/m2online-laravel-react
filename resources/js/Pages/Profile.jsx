@@ -9,7 +9,7 @@ export default function Profile({ auth, user, pictures = null })
     const [header, setHeader] = useState(null)
 
     const images = (pictures != null) ? (pictures.map(image => 
-        <Link href={route('picture.details', {id: image.id})}>
+        <Link href={route('picture.details', {id: image.id})} className="float-left inline-block">
             <img className="w-80 float-left p-3 hover:scale-105 transition-all cursor-pointer" src={'/storage/images/' + image.image}/>
         </Link>
         )) : ('')
@@ -33,7 +33,7 @@ export default function Profile({ auth, user, pictures = null })
         else
         {
 
-            setHeader('This is ' + user.id + ' profile')
+            setHeader('This is ' + user.name + ' profile')
         }
     })
     return (
@@ -57,7 +57,7 @@ export default function Profile({ auth, user, pictures = null })
                                     ''
                                 )}
                             </div>
-                            <div className="col-span-9">
+                            <div className="col-span-9 text-center">
                                 {images}
                             </div>
                         </div>

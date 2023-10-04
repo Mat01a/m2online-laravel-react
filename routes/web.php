@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PictureController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\SearchPictureController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +44,10 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/profile', [PictureController::class, 'store'])->name('profile.store.picture');
     Route::get('/picture/{id}', [PictureController::class, 'show'])->name('picture.details');
+    Route::post('/like', [LikeController::class, 'store'])->name('like.store');
+    Route::delete('/like', [LikeController::class, 'destroy'])->name('like.destroy');
 });
+
 
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.id');
 

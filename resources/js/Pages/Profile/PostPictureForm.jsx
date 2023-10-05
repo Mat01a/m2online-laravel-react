@@ -22,11 +22,7 @@ export default function PostPictureForm()
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('profile.store.picture'), {
-            onError: (errors) => {
-                console.log(errors)
-            }
-        });
+        post(route('profile.store.picture'));
     };
 
     function setTags(e)

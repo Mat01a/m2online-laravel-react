@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Picture;
 use App\Models\User;
 use App\Models\Like;
+use App\Models\PictureTag;
+
+use Illuminate\Support\Facades\DB;
+
 
 class PictureController extends Controller
 {
@@ -18,7 +22,9 @@ class PictureController extends Controller
     {
 
         return Inertia::render('Home', [
-            'pictures' => Picture::all()
+            'pictures' => DB::table('pictures')
+                            ->orderBy('id', 'desc')
+                            ->get()
         ]);
     }
 
@@ -28,11 +34,14 @@ class PictureController extends Controller
             //code...
 
             $request->validate([
-                'image' => ['required', 'image']
+                'image' => ['required', 'image'],
+                'description' => ['required'],
+                'tags' => ['required']
             ]);
 
             if($request->file('image'))
             {
+                DB::beginTransaction();
                 $fileName = time().'.'.$request->image->extension();
                 $request->image->storeAs('public/images',$fileName);
 
@@ -43,6 +52,20 @@ class PictureController extends Controller
                 $new_image->description = $request->description;
 
                 $new_image->save();
+                $new_image_id = $new_image->id;
+
+
+                $tags = $request->tags;
+                
+                foreach ($tags as $tag) {
+                    # code...
+                    $current_tag = new PictureTag();
+                    $current_tag->name = $tag;
+                    $current_tag->picture_id = $new_image_id;
+                    $current_tag->save();
+                }
+
+                DB::commit();                
 
                 return back();
 
@@ -66,11 +89,14 @@ class PictureController extends Controller
                         ->get();
             $numberOfLikes = Like::where('picture_id', $id)->count();
             $is_liked = count($like) ? true : false;
+            $tags = PictureTag::where('picture_id', $id)->get();
+
             return Inertia::render('PictureDetails', [
                 'details' => $details,
                 'author'  => $author,
                 'is_liked' => $is_liked,
-                'number_of_likes' => $numberOfLikes
+                'number_of_likes' => $numberOfLikes,
+                'tags' => $tags
             ]);
         }
         return Redirect::route('home');

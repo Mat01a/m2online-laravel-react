@@ -9,7 +9,7 @@ export default function Profile({ auth, user, pictures = null })
     const [header, setHeader] = useState(null)
 
     const images = (pictures != null) ? (pictures.map(image => 
-        <Link href={route('picture.details', {id: image.id})} className="float-left inline-block">
+        <Link href={route('picture.details', {id: image.id})} className="float-left inline-block" key={image.id}>
             <img className="w-80 float-left p-3 hover:scale-105 transition-all cursor-pointer" src={'/storage/images/' + image.image}/>
         </Link>
         )) : ('')

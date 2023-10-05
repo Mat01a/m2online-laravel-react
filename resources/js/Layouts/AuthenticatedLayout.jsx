@@ -8,7 +8,7 @@ import { Link } from '@inertiajs/react';
 import SearchBar from '@/Components/SearchBar'
 import TextInput from '@/Components/TextInput';
 
-export default function Authenticated({ user, header, children, bunchOfUsers }) {
+export default function Authenticated({ user, header, children, bunchOfUsers, abc }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
@@ -29,14 +29,6 @@ export default function Authenticated({ user, header, children, bunchOfUsers }) 
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ml-6">
-                            <PrimaryButton>
-                                <Link href={route('profile.id', {id: user.id})}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-[1.5px] stroke-current">
-                                        <path d="M12 4.5v15m7.5-7.5h-15" />
-                                    </svg>
-                                </Link>
-
-                            </PrimaryButton>
                             <div className="ml-3 relative">
                                 <Dropdown>
                                     <Dropdown.Trigger>

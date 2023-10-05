@@ -33,8 +33,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-
-Route::post('/home', [SearchPictureController::class, 'index'])->middleware(['auth', 'verified'])->name('getUsers');
+Route::get('/home/{search}', [SearchPictureController::class, 'show'])->name('search');
 
 
 Route::middleware('auth')->group(function () {

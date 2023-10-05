@@ -74,6 +74,7 @@ class ProfileController extends Controller
         
         $pictures = DB::table('pictures')
             ->where('user_id', $id)
+            ->orderBy('id', 'desc')
             ->get();
         return Inertia::render('Profile', [
             'user' => $user_profile,

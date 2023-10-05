@@ -2,8 +2,16 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout"
 import { Head, Link, useForm } from "@inertiajs/react"
 import { useState, useEffect } from "react"
 import LikeForm from './Profile/LikeForm'
-export default function PictureDetails({ auth, details, author, is_liked, number_of_likes }) {
-
+export default function PictureDetails({ auth, details, author, is_liked, number_of_likes, tags }) {
+    
+    const bunchOfTags = tags.map(tag =>
+        <Link href={route('search', {search: tag.name })}>
+            <div key={tag.id} className="inline-block float-left px-[2px] hover:text-blue-500 cursor-pointer">
+                #{tag.name}
+            </div>
+        </Link> 
+        
+        )
     return (
         <>
 
@@ -43,6 +51,10 @@ export default function PictureDetails({ auth, details, author, is_liked, number
                             </div>
                             <div className="px-8 w-full">
                                 {details.description}
+                            </div>
+                            <div className="bg-green-500 w-full px-8">
+                                {bunchOfTags}
+
                             </div>
                             <div className="text-sm text-gray-700 px-8 w-full">
                             </div>

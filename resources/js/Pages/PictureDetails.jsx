@@ -5,8 +5,8 @@ import LikeForm from './Profile/LikeForm'
 export default function PictureDetails({ auth, details, author, is_liked, number_of_likes, tags }) {
     
     const bunchOfTags = tags.map(tag =>
-        <Link href={route('search', {search: tag.name })}>
-            <div key={tag.id} className="inline-block float-left px-[2px] hover:text-blue-500 cursor-pointer">
+        <Link key={tag.id} href={route('search', {search: tag.name })}>
+            <div className="inline-block float-left px-[2px] hover:text-blue-500 cursor-pointer">
                 #{tag.name}
             </div>
         </Link> 
@@ -20,8 +20,8 @@ export default function PictureDetails({ auth, details, author, is_liked, number
             >
                 <Head title="Image" />
 
-                        <div className="mx-auto mt-3 pt-3 dark:bg-gray-50 h-[80vh] max-w-lg drop-shadow-2xl">
-                            <div className="my-6 w-[85%] h-[65%] dark:bg-purple-500 overflow-hidden mx-auto">
+                        <div className="mt-3 pt-3 mx-4 md:mx-auto dark:bg-gray-50 h-[80vh] max-w-lg drop-shadow-2xl">
+                            <div className="my-6 md:w-[85%] w-[90%] h-[65%] dark:bg-purple-500 overflow-hidden mx-auto">
                                 <img className="w-full h-full" src={"/storage/images/" + details.image}/>
 
                             </div>

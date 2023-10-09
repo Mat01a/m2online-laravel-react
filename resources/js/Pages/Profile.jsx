@@ -9,8 +9,8 @@ export default function Profile({ auth, user, pictures = null })
     const [header, setHeader] = useState(null)
 
     const images = (pictures != null) ? (pictures.map(image => 
-        <Link href={route('picture.details', {id: image.id})} className="float-left inline-block" key={image.id}>
-            <img className="w-80 float-left p-3 hover:scale-105 transition-all cursor-pointer" src={'/storage/images/' + image.image}/>
+        <Link href={route('picture.details', {id: image.id})} className="md:float-left inline-block" key={image.id}>
+            <img className="w-72 h-96 float-left p-3 hover:scale-105 transition-all cursor-pointer" src={'/storage/images/' + image.image}/>
         </Link>
         )) : ('')
     function onYourProfile()
@@ -43,23 +43,29 @@ export default function Profile({ auth, user, pictures = null })
                 header={header}
             >
 
-            <Head title={'HI'}/>
+            <Head title={'Profile'}/>
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="grid grid-cols-12 gap-4">
-                            <div className="col-span-3">
                                 {isYourProfile ? (
-                                    <PostPictureForm/>
+                                    <div className="md:col-span-3 col-span-12">
+                                        <PostPictureForm/>
+                                    </div>
 
                                 ) : (
                                     ''
                                 )}
-                            </div>
-                            <div className="col-span-9 text-center">
-                                {images}
-                            </div>
+                            {isYourProfile ? (
+                                <div className="md:col-span-9 col-span-12 text-center">
+                                    {images}
+                                </div>
+                            ) : (
+                                <div className="md:col-span-12 text-center">
+                                    {images}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

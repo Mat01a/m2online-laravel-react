@@ -40,12 +40,12 @@ export default function PostPictureForm()
 
     return (
         <form onSubmit={submit}>
-            <InputFile onChange={e => setData('image', e.target.files[0])} className="py-5"/>
+            <InputFile onChange={e => setData('image', e.target.files[0])} className="pt-3 pb-4"/>
 
-            <div className="w-full text-center">
+            <div className="w-full text-center bg-gray-800 rounded-md py-4">
                 <InputLabel 
                     htmlFor="description"
-                    className="text-left px-6"
+                    className="text-left px-6 mx-2 text-xl"
                     value="Description"
                 />
 
@@ -58,7 +58,7 @@ export default function PostPictureForm()
 
                 <InputLabel
                     htmlFor="tags"
-                    className="text-left px-6"
+                    className="text-left px-6 mx-2 text-xl"
                     value="Tags"
                 />
 

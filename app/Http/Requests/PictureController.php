@@ -43,8 +43,7 @@ class PictureController extends Controller
             if($request->file('image'))
             {
                 DB::beginTransaction();
-                //$fileName = time().'.'.$request->image->extension();
-                $fileName = $request->image->getClientOriginalName();
+                $fileName = time().'.'.$request->image->extension();
                 $request->image->storeAs('public/images',$fileName);
 
                 $new_image = new Picture();

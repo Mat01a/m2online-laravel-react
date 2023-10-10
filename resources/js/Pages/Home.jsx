@@ -19,6 +19,7 @@ export default function Home({ auth, pictures, bunchOfUsers }) {
                 <Head title="Home" />
 
                 <div className="py-12 h-full w-full">
+                    <h1 className="text-2xl lg:px-8 mx-3 font-bold text-gray-50 text-center md:text-left">Recent uploaded</h1>
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-12 gap-4 auto-cols-auto">
                             {listItems}
                 </div>

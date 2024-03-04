@@ -1,0 +1,6 @@
+- Laravel to trochę kobyła, bardzo dużo boilerplatowego/niepotrzebnego kodu którego nie potrzebujesz na tę apkę
+- Fajnie zorganizowana struktura - ma sens
+- Tak jak w przypadku vue, spróbuj wykorzystać do tego typescripta i tsxa 
+- Widać, że to mocno książkowy projekt (ale oparty na dobrych praktykach więc i tak na bardziej na plus niż jakiś kurs od hindusa)
+- Fajnie by było pokazać w tych projektach więcej testów, tech leadzi i CTO bardzo na to zwracają uwagę.
+    - Jeśli nie masz testów, albo nie wiesz jak testować kod który piszesz to często jesteś skreślany z listy.  

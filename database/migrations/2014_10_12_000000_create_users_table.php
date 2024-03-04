@@ -1,3 +1,6 @@
+<!-- Pluginy od migracji są spoko, ale fajnie jest pokazać, że się potrafi to ogarnąć czystym SQLem, Bashem.
+Przypomnij mi się o to to ci pokażę jak fajnie można zrobić SQLową migrację/seed, która jest "tech agnostic" -->
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;

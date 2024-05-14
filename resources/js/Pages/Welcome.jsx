@@ -86,7 +86,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     <div className="flex dark:bg-gray-900 md:h-screen h-[28vh] md:w-[40%] w-full">
                         <div className="absolute dark:bg-gray-50 md:h-[50vh] md:w-[25%] md:right-[20%] md:top-[30%] top-[56vh] pb-12 md:pb-0 mx-4 md:mx-0 drop-shadow-2xl">
                             <div className="m-6 w-[85%] h-[65%] dark:bg-purple-500 overflow-hidden">
-                                <img className="w-full" src="/storage/photos/photo-2.jpg"/>
+                                <img className="w-full" src="/storage/photos/photo.jpg"/>
                             </div>
                             <div className="h-2 border-b border-gray-300 mx-8"></div>
                             <div className="grid grid-cols-12 px-8 w-full">

@@ -2,7 +2,6 @@ services:
     laravel.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.2
-            dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
         image: sail-8.2/app
